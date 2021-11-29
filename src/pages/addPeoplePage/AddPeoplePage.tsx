@@ -9,6 +9,7 @@ export default function AddPeoplePage({}: Props): ReactElement {
   return (
     <Container
       fixed
+      maxWidth="sm"
       sx={{
         width: "90%",
         height: "100%",
@@ -25,7 +26,7 @@ export default function AddPeoplePage({}: Props): ReactElement {
       >
         <TitleSection />
       </Box>
-      <DataCard cardTitle="Add people to split the Bill with"/>
+      <DataCard cardTitle="Add people to split the Bill with" variant="people"/>
     </Container>
   );
 }
