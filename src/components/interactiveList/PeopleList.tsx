@@ -21,13 +21,9 @@ const entryStyle = {
 
 //TODO: Add form validation so person name is not empty
 export default function PeopleList({}: Props): ReactElement {
-  const { peopleList, setPeopleList } = useContext(dataContext);
+  const { peopleList, itemList, setItemList, setPeopleList } =
+    useContext(dataContext);
   const [inputMode, setInputMode] = useState(false);
-
-  // Count how many renders
-  const renderCounter = useRef(0);
-  renderCounter.current = renderCounter.current + 1;
-  console.log("InteractiveList Renders: " + renderCounter.current);
 
   return (
     <div>
@@ -36,13 +32,20 @@ export default function PeopleList({}: Props): ReactElement {
           if (!person) {
             return;
           }
-          console.log(person, index);
           return (
             <ListItem disablePadding sx={entryStyle} key={index}>
               <IconButton
                 onClick={() => {
-                  peopleList.splice(index, 1);
-                  setPeopleList([...peopleList]);
+                  let newPeopleList = [...peopleList];
+                  let newItemList = [...itemList];
+
+                  newPeopleList.splice(index, 1);
+                  newItemList.forEach((itemObject) => {
+                    itemObject.assignedPeople.delete(person);
+                  });
+
+                  setPeopleList(newPeopleList);
+                  setItemList(newItemList);
                 }}
               >
                 <DeleteIcon sx={deleteButtonStyle} />

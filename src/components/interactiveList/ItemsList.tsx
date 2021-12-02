@@ -4,6 +4,7 @@ import { dataContext } from "../../context/dataContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DisplayEntry from "../listEntries/DisplayEntry";
 import InputEntry from "../listEntries/InputEntry";
+import ChipList from "../chipList/ChipList";
 
 interface Props {}
 
@@ -22,13 +23,8 @@ const entryStyle = {
 //TODO: Add ability to set / unset who is paying for each item  
 //TODO: Add form validation so item name is not empty
 export default function ItemsList({}: Props): ReactElement {
-  const { itemList, setItemList } = useContext(dataContext);
+  const { peopleList, itemList, setItemList } = useContext(dataContext);
   const [inputMode, setInputMode] = useState(false);
-
-  // Count how many renders
-  const renderCounter = useRef(0);
-  renderCounter.current = renderCounter.current + 1;
-  console.log("InteractiveList Renders: " + renderCounter.current);
 
   return (
     <div>
@@ -50,6 +46,7 @@ export default function ItemsList({}: Props): ReactElement {
               <DisplayEntry
                 leftData={item.itemName}
                 rightData={`\$${item.itemPrice.toFixed(2)}`}
+                expandedData={<ChipList itemIndex={index} dataList={peopleList}/>}
               />
             </ListItem>
           );

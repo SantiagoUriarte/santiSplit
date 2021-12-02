@@ -1,12 +1,14 @@
 import { Card, Container, CardContent, Typography } from "@mui/material";
 import React, { ReactElement } from "react";
-import ItemsList from "../interactiveList/PeopleList";
-import PeopleList from "../interactiveList/ItemsList";
+import PeopleList from "../interactiveList/PeopleList";
+import ItemsList from "../interactiveList/ItemsList";
 
 interface Props {
   variant: "people" | "items";
   cardTitle?: string;
 }
+
+
 
 export default function DataCard({ variant, cardTitle }: Props): ReactElement {
   return (
@@ -19,8 +21,8 @@ export default function DataCard({ variant, cardTitle }: Props): ReactElement {
     >
       <CardContent>
         <Typography>{cardTitle}</Typography>
-        {variant == "people" ? <ItemsList /> : ""}
-        {variant == "items" ? <PeopleList /> : ""}
+        {variant == "people" ? <PeopleList /> : ""}
+        {variant == "items" ? <ItemsList /> : ""}
       </CardContent>
     </Card>
   );

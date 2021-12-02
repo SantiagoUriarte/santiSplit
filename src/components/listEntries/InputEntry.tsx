@@ -10,6 +10,9 @@ import CheckIcon from "@mui/icons-material/Check";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { dataContext } from "../../context/dataContext";
 
+
+//TODO: Add check to not allow empty items or people
+//TODO: Maybe allow ability to edit line
 interface Props {
   variant: "person" | "billItem";
   stringLabel?: string;
@@ -69,7 +72,7 @@ export default function InputEntry({
           {
             itemName: stringInput,
             itemPrice: parseFloat(numberInput),
-            assignedPeople: [],
+            assignedPeople: new Set(),
           },
         ]);
         break;

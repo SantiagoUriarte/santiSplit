@@ -3,7 +3,7 @@ import React, { createContext } from "react";
 interface ItemObject {
   itemName: string;
   itemPrice: number;
-  assignedPeople: number[];
+  assignedPeople: Set<string>;
 }
 
 interface DataContext {
