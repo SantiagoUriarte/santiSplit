@@ -2,6 +2,7 @@ import { Box, ListItem, Chip } from "@mui/material";
 import React, { ReactElement, useContext } from "react";
 import { dataContext } from "../../context/dataContext";
 import ToggableChip from "../toggableChip/ToggableChip";
+import { calculateTotals } from "../../utils/billCalculations";
 
 interface Props {
   dataList: Array<string> | [];
@@ -16,7 +17,9 @@ const chipListStyle = {
 
 export default function ChipList({ itemIndex, dataList }: Props): ReactElement {
   const { peopleList, itemList, setItemList } = useContext(dataContext);
-  console.log(itemList);
+  // console.log(itemList);
+  console.log("\ntotals")
+  console.log(calculateTotals(peopleList, itemList))
   return (
     <Box sx={chipListStyle}>
       {peopleList.map((personName, peopleIndex) => {

@@ -1,13 +1,13 @@
 import React, { createContext } from "react";
 
-interface ItemObject {
+export interface ItemObject {
   itemName: string;
   itemPrice: number;
   assignedPeople: Set<string>;
 }
 
-interface DataContext {
-  peopleList: Array<string> | [];
+export interface DataContext {
+  peopleList: string[] | [];
   setPeopleList: React.Dispatch<React.SetStateAction<Array<string>>>;
   itemList: ItemObject[] | [];
   setItemList: React.Dispatch<React.SetStateAction<Array<ItemObject>>>;
