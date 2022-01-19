@@ -1,11 +1,11 @@
 import { Container, Box, Button } from "@mui/material";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import DataCard from "../../components/dataCard/DataCard";
 import TitleSection from "../../components/titleSection/TitleSection";
 
 interface Props {}
 
-export default function AddPeoplePage({}: Props): ReactElement {
+export default function AddFinalAndTaxPage({}: Props): ReactElement {
   return (
     <Container
       fixed
@@ -27,8 +27,8 @@ export default function AddPeoplePage({}: Props): ReactElement {
         <TitleSection />
       </Box>
       <DataCard
-        cardTitle="Add people to split the Bill with"
-        variant="people"
+        cardTitle="Add total (without tax) and desired tip %"
+        variant="finalAndTax"
       />
     </Container>
   );

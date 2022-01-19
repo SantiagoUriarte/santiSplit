@@ -1,6 +1,6 @@
 import { ItemObject } from "../context/dataContext";
 
-interface BillSplitByPersonObject {
+interface FinalBillOfPerson {
   name: string;
   totalAmountToPay: number;
   itemsToPayFor: ItemObject[];
@@ -8,7 +8,7 @@ interface BillSplitByPersonObject {
 
 //FIXME: Fix calculations this shit is wrong LOL
 export const calculateTotals = (peopleList: string[], itemsList: ItemObject[]) => {
-    const totalsForEachPerson: {[key: string]: BillSplitByPersonObject} = {}
+    const totalsForEachPerson: {[key: string]: FinalBillOfPerson} = {}
     peopleList.forEach((personName) => {
         totalsForEachPerson[personName] = {
             name: personName,

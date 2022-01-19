@@ -1,4 +1,4 @@
-import { List, ListItem, Button, IconButton } from "@mui/material";
+import { List, ListItem, Button, IconButton, Box } from "@mui/material";
 import { ReactElement, useState, useContext, useRef } from "react";
 import { dataContext } from "../../context/dataContext";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -20,7 +20,6 @@ const entryStyle = {
   marginBottom: "5px",
 };
 
-//TODO: Add ability to set / unset who is paying for each item  
 //TODO: Add form validation so item name is not empty
 export default function ItemsList({}: Props): ReactElement {
   const { peopleList, itemList, setItemList } = useContext(dataContext);
@@ -46,7 +45,9 @@ export default function ItemsList({}: Props): ReactElement {
               <DisplayEntry
                 leftData={item.itemName}
                 rightData={`\$${item.itemPrice.toFixed(2)}`}
-                expandedData={<ChipList itemIndex={index} dataList={peopleList}/>}
+                expandedData={
+                  <ChipList itemIndex={index} dataList={peopleList} />
+                }
               />
             </ListItem>
           );
@@ -60,7 +61,15 @@ export default function ItemsList({}: Props): ReactElement {
           setInputMode={setInputMode}
         />
       ) : (
-        <Button onClick={() => setInputMode(true)}>Add Item</Button>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
+          <Button onClick={() => setInputMode(true)}>Add Item</Button>
+        </Box>
       )}
     </div>
   );

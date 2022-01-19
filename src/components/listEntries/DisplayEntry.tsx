@@ -39,7 +39,7 @@ export default function DisplayEntry({
   expandedData,
 }: Props): ReactElement {
   return (
-    <Accordion sx={contentContainerStyle} disableGutters>
+    <Accordion sx={contentContainerStyle} disableGutters elevation={3}>
       <AccordionSummary
         expandIcon={expandedData != null ? <ExpandMoreIcon /> : ""}
         sx={contentStyle}
